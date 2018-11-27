@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    android:orientation="vertical"
+
+    android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Squad Out"
+                android:textAlignment="center"
+                android:textSize="45sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffffff"
+                android:paddingTop="50dp"
+                android:paddingBottom="150dp"
+                />
+
+
+
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/textbox_bg"
+                android:ems="10"
+                android:textSize="13sp"
+                android:drawablePadding="13dp"
+                android:padding="13dp"
+                android:hint="Email Address"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_email_white_24dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                />
+
+
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:background="@drawable/textbox_bg"
+                android:drawablePadding="13dp"
+                android:padding="13dp"
+                android:textSize="13sp"
+                android:hint="Password"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="4dp"
+                />
+
+            <EditText
+                android:id="@+id/passwordTextConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:background="@drawable/textbox_bg"
+                android:drawablePadding="13dp"
+                android:padding="13dp"
+                android:hint="Confirm Password"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:textSize="13sp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                />
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I accept term and conditions"
+                android:textColor="#ffffff"
+                android:buttonTint="#ffffff"
+                android:layout_marginTop="4dp"/>
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/signup_background"
+                android:padding="16dp"
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toLogin"
+                android:text="I already have an account"
+                android:textColor="#ffffff"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

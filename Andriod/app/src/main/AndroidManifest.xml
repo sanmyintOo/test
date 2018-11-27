@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.sanmyintoo.testapplicaiton">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:exported="true"
+        android:icon="@drawable/appicon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.WhiteActionBar">
+        <activity android:name=".Home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".SignUpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Index"
+            android:label="@string/title_activity_index" />
+        <activity
+            android:name=".Add_EventInformation"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Add_Date" />
+        <activity android:name=".add_time" />
+        <activity android:name=".Add_Location" />
+        <activity
+            android:name=".Add_members"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Confirm" />
+        <activity android:name=".ChatRoom" />
+        <activity android:name=".EventInfo" />
+        <activity android:name=".ProfileUploadActivity" />
+        <activity android:name=".TestActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "630034175495",
+    "firebase_url": "https://squadout-9dad9.firebaseio.com",
+    "project_id": "squadout-9dad9",
+    "storage_bucket": "squadout-9dad9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630034175495:android:167af716ec339422",
+        "android_client_info": {
+          "package_name": "com.example.sanmyintoo.testapplicaiton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630034175495-mke9ftvttpsimtavks0m2co7l3992hvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sanmyintoo.testapplicaiton",
+            "certificate_hash": "7d91b860b5fb7ce93679dea77801e2bfcf6d2087"
+          }
+        },
+        {
+          "client_id": "630034175495-viqh8t0jue6k65ftp7shrsakhlb074cm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7h5CuWXRs16JSeev8szJWxwfldAG5rfc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630034175495-viqh8t0jue6k65ftp7shrsakhlb074cm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

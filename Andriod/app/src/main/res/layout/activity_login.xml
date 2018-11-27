@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+
+    android:visibility="visible">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Squad Out"
+                android:textAlignment="center"
+                android:textSize="50sp"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="50dp"
+                android:layout_marginBottom="150dp"
+                android:textColor="#ffffff"/>
+
+            <EditText
+                android:id="@+id/emailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:ems="10"
+                android:background="@drawable/textbox_bg"
+                android:drawablePadding="13dp"
+                android:padding="13dp"
+                android:hint="Email"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:textSize="13sp"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_email_white_24dp"
+
+                />
+
+            <EditText
+                android:id="@+id/passwordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:background="@drawable/textbox_bg"
+                android:drawablePadding="13dp"
+                android:padding="13dp"
+                android:hint="Password"
+                android:textColorHint="#ffffff"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:textSize="13sp"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:textAppearance="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_gravity="center_horizontal"/>
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:background="@drawable/login_background"
+                android:padding="16dp"
+                android:text="Log in"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:onClick="LoggingIn"/>
+
+            <TextView
+                android:id="@+id/toSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create an account"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:onClick="toSignup"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

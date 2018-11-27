@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileUploadActivity"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:paddingLeft="13dp"
+    android:paddingRight="13dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please upload profile image and username"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:textColor="#fff"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_photo_camera_24dp"
+            android:scaleType="fitXY"
+            />
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="tap to choose an image from gallery"
+        android:textAlignment="center"
+        android:textColor="#dedbdb"/>
+
+    <EditText
+        android:id="@+id/usernameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:background="@drawable/textbox_bg"
+        android:drawablePadding="13dp"
+        android:padding="13dp"
+        android:hint="Username"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:maxLines="1"
+        android:textSize="13sp"
+        android:drawableLeft="@drawable/ic_person_white_24dp"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/login_background"
+        android:padding="16dp"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+</LinearLayout>
