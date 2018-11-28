@@ -1,14 +1,16 @@
 package com.example.sanmyintoo.testapplicaiton;
 
-public class User {
-    public String username, email;
+import android.widget.EditText;
 
-    public User (){
+public class User {
+    public String username;
+
+    public User() {
 
     }
 
-    public User(String username, String email) {
+    public User(String username) {
         this.username = username;
-        this.email = email;
+
     }
 }

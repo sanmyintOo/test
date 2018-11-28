@@ -21,9 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -38,7 +41,7 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
     ImageView profileImage;
     EditText username;
     Uri uriProfileImage;
-    ProgressBar progressBar;
+    ProgressBar progressBar, progressforsignup;
     String profileImageUrl;
 
     FirebaseAuth mAuth;
@@ -52,6 +55,7 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
         profileImage = (ImageView) findViewById(R.id.profileImageView);
         username = (EditText) findViewById(R.id.usernameText);
         progressBar = findViewById(R.id.progressbar);
+        progressforsignup = findViewById(R.id.progressbarfosignup);
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +64,6 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-       // loadUserInformation();
 
 //        findViewById(R.id.save_btn).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -71,37 +74,17 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
 
         findViewById(R.id.save_btn).setOnClickListener(this);
     }
+
     @Override
     protected void onStart() {
         super.onStart();
-        if(mAuth.getCurrentUser() == null ){
-            finish();
-            startActivity(new Intent(this, LoginActivity.class));
-        }
+//        if(mAuth.getCurrentUser() == null ){
+//            finish();
+//            startActivity(new Intent(this, LoginActivity.class));
+//        }
     }
 
-    private void loadUserInformation() {
-        FirebaseUser user = mAuth.getCurrentUser();
-
-
-        if(user != null){
-            if(user.getPhotoUrl() != null) {
-                Glide.with(this)
-                        .load(user.getPhotoUrl().toString())
-                        .into(profileImage);
-            }else {
-                Toast.makeText(ProfileUploadActivity.this, "No photo url",Toast.LENGTH_SHORT).show();
-            }
-            if(user.getDisplayName() != null){
-                username.setText(user.getDisplayName());
-            }
-            else{
-                Toast.makeText(ProfileUploadActivity.this, "No display name",Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-
+//    Saving profile pic and user name
 
     private void saveUserInformation() {
         String displayName = username.getText().toString();
@@ -117,25 +100,29 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
                     .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profileImageUrl))
                     .build();
+            progressforsignup.setVisibility(View.VISIBLE);
+            user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressforsignup.setVisibility(View.GONE);
+                    if (task.isSuccessful()) {
+                        Toast.makeText(ProfileUploadActivity.this, "Registered sucessfully and profile saved", Toast.LENGTH_SHORT).show();
 
-           user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
-               @Override
-               public void onComplete(@NonNull Task<Void> task) {
-                   if(task.isSuccessful()){
-                       Toast.makeText(ProfileUploadActivity.this, "Profile Saved",Toast.LENGTH_SHORT).show();
-                       startActivity(new Intent(ProfileUploadActivity.this, Index.class));
-                   }
-                   else{
-                       Toast.makeText(ProfileUploadActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                   }
-               }
-           });
-        }else if (user == null){
-            Toast.makeText(ProfileUploadActivity.this, "No User",Toast.LENGTH_SHORT).show();
-        }else if (profileImageUrl == null){
-            Toast.makeText(ProfileUploadActivity.this, "Profile Url is null",Toast.LENGTH_SHORT).show();
-        }
-        else {
+                        Intent intent = new Intent(ProfileUploadActivity.this, Index.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+
+                    } else {
+                        Toast.makeText(ProfileUploadActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } else if (user == null) {
+            Toast.makeText(ProfileUploadActivity.this, "No User", Toast.LENGTH_SHORT).show();
+        } else if (profileImageUrl == null) {
+            Toast.makeText(ProfileUploadActivity.this, "Profile Url is null", Toast.LENGTH_SHORT).show();
+        } else {
             Toast.makeText(ProfileUploadActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
         }
 
@@ -162,6 +149,7 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
 
     }
 
+
     private void uploadImagetoFirebaseStorage() {
         final StorageReference profileimageRef =
                 FirebaseStorage.getInstance().getReference("profilepics/" + System.currentTimeMillis() + ".jpg");
@@ -173,18 +161,18 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressBar.setVisibility(View.GONE);
 //                    profileImageUrl = taskSnapshot.getStorage().getDownloadUrl().toString();
-                   profileimageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                       @Override
-                       public void onSuccess(Uri uri) {
-                           profileImageUrl = uri.toString();
+                    profileimageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            profileImageUrl = uri.toString();
 
-                       }
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(ProfileUploadActivity.this, e.getMessage(),Toast.LENGTH_SHORT).show();
-                       }
-                   });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ProfileUploadActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             })
                     .addOnFailureListener(new OnFailureListener() {
@@ -223,9 +211,52 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.save_btn:
-                saveUserInformation();
-
+                Signup();
                 break;
         }
+    }
+
+    private void Signup() {
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("EMAIL");
+        String password = intent.getStringExtra("PASSWORD");
+
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                if (task.isSuccessful()) {
+                    final User user = new User(username.getText().toString());
+                    FirebaseDatabase.getInstance().getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseDatabase.getInstance().getReference("Users/" + FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .child("Group")
+                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            finish();
+                                            saveUserInformation();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+//                    Toast.makeText(ProfileUploadActivity.this, getString(R.string.register_sucess),Toast.LENGTH_LONG).show();
+                } else {
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(getApplicationContext(), "This email is already registered", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 }

@@ -47,13 +47,8 @@ public class Index extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        setTitle("Index");
-//        Index_fragment e = new Index_fragment();
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.fragment, e).commit();
 
-        if(savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
         }
 
@@ -63,48 +58,47 @@ public class Index extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
 
 
-
-
-
         loadUserInformation();
 
     }
+
     private void loadUserInformation() {
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if(user != null){
-            if(user.getPhotoUrl() != null) {
+        if (user != null) {
+            if (user.getPhotoUrl() != null) {
 
                 Glide.with(this)
                         .load(user.getPhotoUrl().toString())
                         .into(profile_pic);
-            }else {
-                Toast.makeText(Index.this, "No photo url",Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(Index.this, "No photo url", Toast.LENGTH_SHORT).show();
             }
-            if(user.getDisplayName() != null){
+            if (user.getDisplayName() != null) {
                 username.setText(user.getDisplayName().toString());
+            } else {
+                Toast.makeText(Index.this, "No display name", Toast.LENGTH_SHORT).show();
             }
-            else{
-                Toast.makeText(Index.this, "No display name",Toast.LENGTH_SHORT).show();
-            }
-        }
-        else{
-            Toast.makeText(Index.this, "No user",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(Index.this, "No user", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
 
+    }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -134,9 +128,7 @@ public class Index extends AppCompatActivity
             setting s = new setting();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, s).commit();
-        }
-        else if (id == R.id.nav_logout) {
-
+        } else if (id == R.id.nav_logout) {
         }
 
 

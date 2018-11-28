@@ -1,6 +1,8 @@
 package com.example.sanmyintoo.testapplicaiton;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,12 +30,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         emailText = (EditText) findViewById(R.id.emailText);
         passwordText = (EditText) findViewById(R.id.passwordText);
-        progressbar = findViewById(R.id.progressbar);
+        progressbar = findViewById(R.id.progressBar);
         progressbar.setVisibility(View.GONE);
 
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.loginBtn).setOnClickListener(this);
+    }
+
+    public void SignUp(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 
 
@@ -64,10 +71,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressbar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    finish();
+                    SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edt = pref.edit();
+                    edt.putBoolean("activity_executed", true);
+                    edt.commit();
+
                     Intent intent = new Intent(LoginActivity.this, Index.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -92,11 +104,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.loginBtn:
                 userLogin();
                 break;
-
-            case R.id.toSignup:
-                finish();
-                startActivity(new Intent(this, SignUpActivity.class));
-                break;
         }
+    }
+
+    private void sendUserData() {
+        String email = emailText.getText().toString().trim();
+        String password = passwordText.getText().toString().trim();
+
+
+        if (email.isEmpty()) {
+            emailText.setError("Email is required");
+            emailText.requestFocus();
+            return;
+        }
+        if (password.isEmpty()) {
+            passwordText.setError("Password is required");
+            passwordText.requestFocus();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailText.setError("Enter a valid email");
+            emailText.requestFocus();
+            return;
+        }
+
+        Intent intent = new Intent(this, ProfileUploadActivity.class);
+
+        intent.putExtra("EMAIL", email);
+        intent.putExtra("PASSWORD", password);
+
+        startActivity(intent);
+
     }
 }

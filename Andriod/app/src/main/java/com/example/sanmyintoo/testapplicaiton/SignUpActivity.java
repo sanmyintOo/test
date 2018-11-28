@@ -23,56 +23,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
 
-    private void register(){
 
-        String email = emailText.getText().toString().trim();
-        String password = passwordText.getText().toString().trim();
-        String password_confirm = passwordTextConfirm.getText().toString().trim();
-
-
-        if (email.isEmpty()){
-            emailText.setError("Email is required");
-            emailText.requestFocus();
-            return;
-        }
-        if (password.isEmpty()){
-            passwordText.setError("Password is required");
-            passwordText.requestFocus();
-            return;
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            emailText.setError("Enter a valid email");
-            emailText.requestFocus();
-            return;
-        }
-        if(password.length()<8){
-            passwordText.setError("Password should be 8 characters");
-            passwordText.requestFocus();
-            return;
-        }
-
-        progressbar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                progressbar.setVisibility(View.GONE);
-                if(task.isSuccessful()){
-                    finish();
-                    Intent intent = new Intent(SignUpActivity.this, ProfileUploadActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(SignUpActivity.this, getString(R.string.register_sucess),Toast.LENGTH_LONG).show();
-                }else {
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                        Toast.makeText(getApplicationContext(), "This email is already registered", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,10 +40,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.signup_button).setOnClickListener(this);
     }
 
+    public void toLogin(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
-        if(mAuth.getCurrentUser() != null ){
+        if (mAuth.getCurrentUser() != null) {
 
         }
     }
@@ -105,15 +61,41 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.signup_button:
-                register();
-                break;
-
-            case R.id.toLogin:
-                finish();
-                startActivity(new Intent(this, LoginActivity.class));
+                sendUserData();
                 break;
         }
+    }
+
+    private void sendUserData() {
+        String email = emailText.getText().toString().trim();
+        String password = passwordText.getText().toString().trim();
+
+
+        if (email.isEmpty()) {
+            emailText.setError("Email is required");
+            emailText.requestFocus();
+            return;
+        }
+        if (password.isEmpty()) {
+            passwordText.setError("Password is required");
+            passwordText.requestFocus();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailText.setError("Enter a valid email");
+            emailText.requestFocus();
+            return;
+        }
+
+        Intent intent = new Intent(this, ProfileUploadActivity.class);
+
+        intent.putExtra("EMAIL", email);
+        intent.putExtra("PASSWORD", password);
+
+        startActivity(intent);
+        finish();
+
     }
 }

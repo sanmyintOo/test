@@ -72,12 +72,14 @@
                 android:textSize="16dp"
                 android:textAppearance="@style/Widget.AppCompat.Spinner.Underlined"
                 android:layout_gravity="center_horizontal"/>
+
             <ProgressBar
-                android:id="@+id/progressbar"
+                android:id="@+id/progressBar"
                 android:visibility="gone"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
@@ -91,7 +93,7 @@
                 android:onClick="LoggingIn"/>
 
             <TextView
-                android:id="@+id/toSignup"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Create an account"

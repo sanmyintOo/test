@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity"
+    android:background="@color/background"
     android:orientation="vertical"
 
-    android:background="@color/background">
+    tools:context=".SignUpActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,87 +23,84 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="150dp"
+                android:paddingTop="50dp"
                 android:text="Squad Out"
                 android:textAlignment="center"
-                android:textSize="45sp"
-                android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff"
-                android:paddingTop="50dp"
-                android:paddingBottom="150dp"
-                />
-
+                android:textSize="45sp" />
 
 
             <EditText
                 android:id="@+id/emailText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:background="@drawable/textbox_bg"
-                android:ems="10"
-                android:textSize="13sp"
-                android:drawablePadding="13dp"
-                android:padding="13dp"
-                android:hint="Email Address"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_email_white_24dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                />
+                android:background="@drawable/textbox_bg"
+                android:drawableLeft="@drawable/ic_email_white_24dp"
+                android:drawablePadding="13dp"
+                android:ems="10"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="13sp" />
 
 
             <EditText
                 android:id="@+id/passwordText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:background="@drawable/textbox_bg"
-                android:drawablePadding="13dp"
-                android:padding="13dp"
-                android:textSize="13sp"
-                android:hint="Password"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_lock_black_24dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="4dp"
-                />
+                android:background="@drawable/textbox_bg"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="13dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="13sp" />
 
             <EditText
                 android:id="@+id/passwordTextConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:background="@drawable/textbox_bg"
-                android:drawablePadding="13dp"
-                android:padding="13dp"
-                android:hint="Confirm Password"
-                android:textColorHint="#ffffff"
-                android:textColor="#ffffff"
-                android:maxLines="1"
-                android:drawableLeft="@drawable/ic_lock_black_24dp"
-                android:textSize="13sp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                />
+                android:background="@drawable/textbox_bg"
+                android:drawableLeft="@drawable/ic_lock_black_24dp"
+                android:drawablePadding="13dp"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="13dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff"
+                android:textSize="13sp" />
+
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I accept term and conditions"
-                android:textColor="#ffffff"
+                android:layout_marginTop="4dp"
                 android:buttonTint="#ffffff"
-                android:layout_marginTop="4dp"/>
+                android:text="I accept term and conditions"
+                android:textColor="#ffffff" />
+
             <ProgressBar
                 android:id="@+id/progressbar"
-                android:visibility="gone"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/signup_button"
@@ -118,16 +114,14 @@
                 android:textColor="#ffffff" />
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/toLogin"
-                android:text="I already have an account"
-                android:textColor="#ffffff"
-                android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:onClick="toLogin"
+                android:text="I already have an account"
                 android:textAlignment="center"
-                />
+                android:textColor="#ffffff" />
 
         </LinearLayout>
     </ScrollView>
