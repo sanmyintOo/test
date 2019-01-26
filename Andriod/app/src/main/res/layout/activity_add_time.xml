@@ -29,11 +29,13 @@
             android:paddingRight="13dp">
 
             <TimePicker
+                android:id="@+id/timepicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/calendar_bg"
-                android:paddingBottom="20dp"></TimePicker>
+                android:paddingBottom="20dp"
+                ></TimePicker>
 
 
             <Button

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".Confirm">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/event_image_detail"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/a"
+                app:civ_border_color="#fff"
+                app:civ_border_width="1dp" />
+
+            <TextView
+                android:id="@+id/event_name_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gusto Meeting"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="23sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bigtextbox"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Invited Members"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#fff"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/myRecyclerViewforMember_eventDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bigtextbox"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Accepted Members"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#fff"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/myRecyclerViewforMemberaccepted_eventDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bigtextbox"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+
+                <TextView
+                    android:id="@+id/Date_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4th JUL"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/Time_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="11:30 AM"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="130dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="#fff" />
+
+
+
+                <TextView
+                    android:id="@+id/Address_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No. 347, Pyay Road"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    android:maxLines="2"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="13dp"
+                    android:layout_marginTop="10dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancel_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".40"
+                    android:background="@drawable/discard_background"
+                    android:padding="16dp"
+
+                    android:text="Discard"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".05"/>
+
+                <Button
+                    android:id="@+id/accept_btn"
+                    android:layout_width="0dp"
+                    android:layout_weight=".40"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/accept_background"
+                    android:padding="16dp"
+                    android:text="Accept"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!--<Button-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/login_background"-->
+    <!--android:padding="16dp"-->
+    <!--android:text="Continue"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textColor="#ffffff"-->
+    <!--android:onClick="toChatroom"/>-->
+
+</RelativeLayout>

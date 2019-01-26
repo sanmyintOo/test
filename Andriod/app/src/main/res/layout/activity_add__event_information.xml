@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_EventInformation"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
                 android:paddingTop="20dp"
                 />
             <EditText
+                android:id="@+id/eventname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -42,6 +44,7 @@
                 />
 
             <EditText
+                android:id="@+id/eventdes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -58,17 +61,31 @@
                 android:textSize="13sp"
                 android:maxLines="1"
                 />
-            <ImageView
-                android:id="@+id/fab"
-                android:layout_marginTop="20dp"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/addimage_bg"
-                android:orientation="vertical"
-                android:src="@drawable/ic_add_black_24dp"
-                android:padding="20dp"
-                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/img_chooser"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/addimage_bg"
+                    android:src="@drawable/ic_add_black_24dp"
+                    android:padding="20dp" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    />
+
+            </RelativeLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,20 +93,25 @@
                 android:textColor="#ffffff"
                 android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal"/>
-
-            <Button
-                android:id="@+id/toDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
-                android:background="@drawable/login_background"
-                android:padding="16dp"
-                android:text="Continue"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:onClick="toDate"
-                />
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        android:layout_marginBottom="15dp">
+        <Button
+            android:id="@+id/toDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_background"
+            android:padding="16dp"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,29 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Location"
-    android:orientation="vertical"
-    android:paddingLeft="13dp"
-    android:paddingRight="13dp">
-    <TextView
+    tools:context=".Add_Location">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="Map"
-        />
+        android:layout_height="match_parent"
+        tools:context=".Add_Location" />
+
+    <RelativeLayout
+    android:id="@+id/relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textbox_search"
+        android:paddingLeft="10dp">
+
+        <ImageView
+            android:id="@+id/searchbtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:drawablePadding="5dp"
+            android:src="@drawable/ic_search_black_24dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/searchText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/searchbtn"
+            android:background="@drawable/textbox_search"
+            android:ems="10"
+            android:hint="Enter Address, Place or Zip Code"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingBottom="13dp"
+            android:paddingTop="13dp"
+            android:textColor="#646262"
+            android:textColorHint="#716e6e"
+            android:textSize="13sp" />
+
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/place_info"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/relative_layout"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_info"
+        android:padding="2dp"/>
+
+
     <Button
+        android:id="@+id/choosebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="530dp"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/login_background"
         android:padding="16dp"
-        android:text="Continue"
+        android:text="Choose Location"
         android:textAllCaps="false"
         android:textColor="#ffffff"
-        android:onClick="toSearchPeople"/>
-        <!---->
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginBottom="10dp"/>
 
-</LinearLayout>
+
+    <!--<Button-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="530dp"-->
+    <!--android:background="@drawable/login_background"-->
+    <!--android:onClick="toSearchPeople"-->
+    <!--android:padding="16dp"-->
+    <!--android:text="Continue"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textColor="#ffffff" />-->
+
+
+</RelativeLayout>

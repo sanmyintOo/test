@@ -1,6 +1,8 @@
 package com.example.sanmyintoo.testapplicaiton;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,13 +24,15 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Index extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     FirebaseAuth mAuth;
     TextView username;
-    ImageView profile_pic;
+    CircleImageView profile_pic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class Index extends AppCompatActivity
 
         View headerView = navigationView.getHeaderView(0);
         username = (TextView) headerView.findViewById(R.id.usernameTextt);
-        profile_pic = (ImageView) headerView.findViewById(R.id.imageView);
+        profile_pic = (CircleImageView) headerView.findViewById(R.id.imageView);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -129,6 +133,15 @@ public class Index extends AppCompatActivity
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, s).commit();
         } else if (id == R.id.nav_logout) {
+            mAuth.signOut();
+            finish();
+            SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
+            SharedPreferences.Editor edt = pref.edit();
+            edt.putBoolean("activity_executed", false);
+            edt.commit();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+
         }
 
 

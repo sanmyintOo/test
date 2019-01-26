@@ -6,140 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".Add_members"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="13dp"
+    android:paddingRight="13dp">
 
-    <EditText
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".85"
+            android:background="@drawable/search_box"
+            android:ems="10"
+            android:hint="Search"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/searchBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".15"
+            android:padding="1dp"
+            android:src="@drawable/loupe"
+
+            />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/searchlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10"
-        android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/textbox_bg"
-        android:drawablePadding="5dp"
-        android:padding="10dp"
-        android:hint="Search"
-        android:textColorHint="#ffffff"
-        android:textColor="#ffffff"
-        android:textSize="15sp"
-        android:maxLines="1"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
-        />
-    <ScrollView
+        android:layout_marginTop="10dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="13dp"
-        android:paddingRight="13dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/continuebtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <!--<ImageView-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:src="@drawable/a"-->
-                    <!--/>-->
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/a"
-                    />
-                <TextView
-                    android:layout_width="290dp"
-                    android:layout_height="50dp"
-                    android:text="Aung Kaung Khant"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#fff"
-                    />
+            android:background="@drawable/login_background"
+            android:padding="16dp"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:onClick="toConfirm"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"/>
+    </RelativeLayout>
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:buttonTint="#ffff"
-                    android:button="@drawable/checkbox_selecter"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/a"
-                    />
-                <TextView
-                    android:layout_width="290dp"
-                    android:layout_height="50dp"
-                    android:text="Aung Kaung Khant"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#fff"
-                    />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:buttonTint="#ffff"
-                    android:button="@drawable/checkbox_selecter"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/a"
-                    />
-                <TextView
-                    android:layout_width="290dp"
-                    android:layout_height="50dp"
-                    android:text="Aung Kaung Khant"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#fff"
-                    />
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="11dp"
-                    android:buttonTint="#ffff"
-                    android:button="@drawable/checkbox_selecter"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"
-        android:layout_marginTop="300dp"
-        android:background="@drawable/login_background"
-        android:padding="16dp"
-        android:text="Continue"
-        android:textAllCaps="false"
-        android:textColor="#ffffff"
-        android:onClick="toConfirm"/>
 
 </LinearLayout>

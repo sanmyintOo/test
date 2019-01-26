@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.loginBtn).setOnClickListener(this);
     }
 
-    public void SignUp(View view) {
+    public void toSignup(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }

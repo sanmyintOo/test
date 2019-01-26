@@ -12,13 +12,16 @@
         android:layout_height="60dp"
         android:background="@color/colorPrimary"
         android:orientation="horizontal">
-        <ImageView
-            android:layout_width="50dp"
+        <TextView
+            android:id="@+id/EVENT_NAME"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:padding="13dp"
-            android:onClick="toChatRoom"
-            />
+            android:textSize="18sp"
+            android:text="Gusto Meeting"
+            android:paddingTop="18dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
 
     </LinearLayout>
     <LinearLayout
@@ -26,6 +29,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/event_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -61,6 +65,7 @@
                 android:paddingLeft="5dp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/leaveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
