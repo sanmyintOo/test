@@ -79,8 +79,77 @@ public class eventdetail extends AppCompatActivity {
             }
         });
 
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(eventdetail.this);
+                builder.setMessage("Are you sure want to decline this event?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                delete();
+                                eventdetail.this.finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
         loaddata();
         loadInvitedMember();
+
+    }
+
+    private void delete() {
+        Bundle extras = getIntent().getExtras();
+        final String eventid = extras.getString("EventID");
+        final String eventname = extras.getString("EventName");
+
+        FirebaseDatabase.getInstance().getReference().child("Events_Members/" + eventid + "/invitedmember")
+                .orderByChild("UserID")
+                .equalTo(mAuth.getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            key = childSnapshot.getKey();
+                            childSnapshot.getRef().removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+        FirebaseDatabase.getInstance().getReference().child("Users/"+ mAuth.getCurrentUser().getUid() + "/Groups/RequestedGroups")
+                .orderByChild("EventID")
+                .equalTo(eventid)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            String eventkey = childSnapshot.getKey();
+                            childSnapshot.getRef().removeValue();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+        Intent i = new Intent(this, Index.class);
+        startActivity(i);
+
 
     }
 

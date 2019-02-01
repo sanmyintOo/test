@@ -126,38 +126,14 @@ public class Add_members extends AppCompatActivity {
                                 Toast.makeText(Add_members.this, "You can't invite yourself dude", Toast.LENGTH_SHORT).show();
                             } else {
                                 invitedmember.add(model.getUserID());
+                                Toast.makeText(Add_members.this, "Invited .. ", Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(Add_members.this, "User ID is null .. ", Toast.LENGTH_LONG).show();
                         }
-                        Toast.makeText(Add_members.this, invitedmember.toString(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(Add_members.this, invitedmember.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
-
-
-//               holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                   @Override
-//                   public void onClick(View v) {
-//                       AlertDialog.Builder builder = new AlertDialog.Builder(Add_members.this);
-//                       builder.setMessage("Are you sure you want to invite?")
-//                               .setCancelable(false)
-//                               .setPositiveButton("Invite", new DialogInterface.OnClickListener() {
-//                                   public void onClick(DialogInterface dialog, int id) {
-//                                      // Toast.makeText(Add_members.this, model.getUserID(), Toast.LENGTH_LONG).show();
-//                                       invitedmember.add(model.getUserID());
-//                                       Toast.makeText(Add_members.this, invitedmember.toString(), Toast.LENGTH_LONG).show();
-//                                   }
-//                               })
-//                               .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                                   public void onClick(DialogInterface dialog, int id) {
-//                                       dialog.cancel();
-//                                   }
-//                               });
-//                       AlertDialog alert = builder.create();
-//                       alert.show();
-//                   }
-//               });
-
             }
         };
         mSearchResult.setAdapter(adapter);

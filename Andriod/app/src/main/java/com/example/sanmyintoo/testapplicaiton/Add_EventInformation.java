@@ -70,7 +70,7 @@ public class Add_EventInformation extends AppCompatActivity {
                     eventDesception.requestFocus();
                     return;
                 }
-                if(profileImageUrl.isEmpty()){
+                if(profileImageUrl==null){
                     Toast.makeText(Add_EventInformation.this, "Please upload an image for your event", Toast.LENGTH_SHORT).show();
                     return;
                 }

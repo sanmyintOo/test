@@ -441,7 +441,7 @@ public class Add_Location extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(Add_Location.this, "Nullpointer exception : " + e.getMessage(), Toast.LENGTH_SHORT ).show();
             }
             moveCamera(new LatLng(place.getViewport().getCenter().latitude, place.getViewport().getCenter().longitude),DEFAULT_ZOOM, mPlace);
-            Toast.makeText(Add_Location.this, "Location found" + place.toString(), Toast.LENGTH_LONG ).show();
+            Toast.makeText(Add_Location.this, "Location found", Toast.LENGTH_LONG ).show();
             places.release();
         }
     };

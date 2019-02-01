@@ -161,14 +161,9 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
     private void saveUserInformation() {
         progressforsignup.setVisibility(View.VISIBLE);
         final String displayName = username.getText().toString();
-        if (displayName == null) {
-            username.setError("Enter username");
-            username.requestFocus();
-            return;
-        }
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (user != null && profileImageUrl != null) {
+        if (user != null && profileImageUrl!=null) {
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profileImageUrl))
@@ -199,7 +194,7 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()){
                                                 User user = new User(username,profileurl, userID);
-                                                FirebaseDatabase.getInstance().getReference("UserDataForSearch").push()
+                                                FirebaseDatabase.getInstance().getReference("UserDataForSearch/" + FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                         .setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
@@ -225,7 +220,7 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
             });
         } else if (user == null) {
             Toast.makeText(ProfileUploadActivity.this, "No User", Toast.LENGTH_SHORT).show();
-        } else if (profileImageUrl == null) {
+        } else if (profileImageUrl.isEmpty()) {
             Toast.makeText(ProfileUploadActivity.this, "Profile Url is null", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(ProfileUploadActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
@@ -248,6 +243,17 @@ public class ProfileUploadActivity extends AppCompatActivity implements View.OnC
         Intent intent = getIntent();
         String email = intent.getStringExtra("EMAIL");
         String password = intent.getStringExtra("PASSWORD");
+
+        final String displayName = username.getText().toString();
+        if (displayName == null) {
+            username.setError("Enter username");
+            username.requestFocus();
+            return;
+        }
+        if(profileImageUrl == null){
+            Toast.makeText(ProfileUploadActivity.this, "Please upload profile pic!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         progressforsignup.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

@@ -16,16 +16,18 @@
             android:orientation="vertical"
             android:paddingLeft="18dp"
             android:paddingRight="18dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="150dp"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingTop="50dp"
                 android:text="Squad Out"
                 android:textAlignment="center"
-                android:textSize="50sp"
-                android:layout_gravity="center_horizontal"
-                android:paddingTop="50dp"
-                android:layout_marginBottom="150dp"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff"
+                android:textSize="50sp" />
 
             <EditText
                 android:id="@+id/emailText"

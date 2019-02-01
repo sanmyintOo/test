@@ -21,7 +21,7 @@ public class EventInfo extends AppCompatActivity {
     LinearLayout event_detail, leaveBtn;
     TextView eventName;
     FirebaseAuth mAuth;
-    String key, groupID;
+    String key, groupID, groupname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class EventInfo extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         groupID = extras.getString("EventID");
-        final String groupname = extras.getString("EventName");
+        groupname = extras.getString("EventName");
 
         event_detail = (LinearLayout) findViewById(R.id.event_detail);
         leaveBtn = (LinearLayout) findViewById(R.id.leaveBtn);
@@ -88,7 +88,34 @@ public class EventInfo extends AppCompatActivity {
 
                     }
                 });
+
+        FirebaseDatabase.getInstance().getReference().child("Users/"+ mAuth.getCurrentUser().getUid() + "/Groups/Accepted")
+                .orderByChild("EventID")
+                .equalTo(groupID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            String eventkey = childSnapshot.getKey();
+                            childSnapshot.getRef().removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
         Intent i = new Intent(EventInfo.this, Index.class);
+        startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(EventInfo.this, ChatRoom.class);
+        i.putExtra("EventID", groupID);
+        i.putExtra("EventName", groupname);
         startActivity(i);
     }
 }

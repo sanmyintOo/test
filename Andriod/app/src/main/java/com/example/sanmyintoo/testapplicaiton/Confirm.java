@@ -271,9 +271,6 @@ public class Confirm extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             checkResult = true;
                         }
-
-
-
                     }
                 });
 

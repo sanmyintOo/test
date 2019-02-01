@@ -9,65 +9,19 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/eventID"
+            android:id="@+id/place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Requested Events"
-            android:textColor="#fcfbfb"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/information"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No Requested Event"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:visibility="gone" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/myRecyclerView_requested"
-                android:layout_width="match_parent"
-                android:layout_height="185dp"
-                android:orientation="horizontal" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Upcoming Events"
-            android:textColor="#fcfbfb"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/information_"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No Requested Event"
-                android:textColor="#fff"
-                android:textSize="18sp"
-                android:visibility="gone" />
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/myRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="185dp"
-                android:orientation="horizontal" />
-        </RelativeLayout>
+            android:textAlignment="center"
+            android:text="Development in progress"
+            android:textColor="#faf8f8"
+            android:layout_marginTop="50dp"
+            android:textSize="18sp"
+            />
     </LinearLayout>
 
 

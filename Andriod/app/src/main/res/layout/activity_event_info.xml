@@ -48,23 +48,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_location_on_black_24dp"
-                android:padding="15dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Location"
-                android:paddingTop="13dp"
-                android:textSize="18sp"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-        <LinearLayout
             android:id="@+id/leaveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

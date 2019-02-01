@@ -13,17 +13,15 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/place"
+            android:id="@+id/place1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Invited Member"
-            android:textColor="#000"
-            android:textSize="30sp" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/myRecyclerViewforMembers"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:textAlignment="center"
+            android:text="Development in progress"
+            android:textColor="#faf8f8"
+            android:layout_marginTop="50dp"
+            android:textSize="18sp"
+            />
     </LinearLayout>
 
 

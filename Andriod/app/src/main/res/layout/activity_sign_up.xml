@@ -31,7 +31,6 @@
                 android:textColor="#ffffff"
                 android:textSize="45sp" />
 
-
             <EditText
                 android:id="@+id/emailText"
                 android:layout_width="match_parent"
@@ -49,7 +48,6 @@
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
                 android:textSize="13sp" />
-
 
             <EditText
                 android:id="@+id/passwordText"

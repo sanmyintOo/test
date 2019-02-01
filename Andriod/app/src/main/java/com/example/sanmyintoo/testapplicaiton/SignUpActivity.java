@@ -46,11 +46,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    //    public void toLogin(View view) {
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        register();
-//        startActivity(intent);
-//    }
 
     @Override
     public void onClick(View v) {
@@ -64,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void sendUserData() {
         String email = emailText.getText().toString().trim();
         String password = passwordText.getText().toString().trim();
-
+        String paaswordConfirm = passwordTextConfirm.getText().toString().trim();
 
         if (email.isEmpty()) {
             emailText.setError("Email is required");
@@ -74,6 +69,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         if (password.isEmpty()) {
             passwordText.setError("Password is required");
             passwordText.requestFocus();
+            return;
+        }
+        if(!password.equals(paaswordConfirm)){
+            passwordTextConfirm.setError("Password do not match!");
+            passwordTextConfirm.requestFocus();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {

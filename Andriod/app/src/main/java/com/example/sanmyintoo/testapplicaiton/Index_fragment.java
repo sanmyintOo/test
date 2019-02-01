@@ -57,7 +57,7 @@ public class Index_fragment extends Fragment implements View.OnClickListener {
 
         fragmentView = inflater.inflate(R.layout.fragment_index_fragment, container, false);
 
-        groupid = (TextView) fragmentView.findViewById(R.id.eventID);
+//        groupid = (TextView) fragmentView.findViewById(R.id.eventID);
         information = (TextView) fragmentView.findViewById(R.id.information);
         information_ = (TextView) fragmentView.findViewById(R.id.information_);
 
